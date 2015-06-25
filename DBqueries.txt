@@ -1,0 +1,25 @@
+
+CREATE TABLE `Appliance` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `description` varchar(128) DEFAULT NULL,
+ `vendorname` varchar(48) DEFAULT NULL,
+ `type` varchar(48) DEFAULT NULL,
+ `adddate` varchar(28) DEFAULT NULL,
+ `room_id` int(11) DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `Room` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(128) DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `WorkToDo` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `description` varchar(128) DEFAULT NULL,
+ `command` varchar(48) DEFAULT NULL,
+ `dateToDo` TIMESTAMP,
+ `done` BIT DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
