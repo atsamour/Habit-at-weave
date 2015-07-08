@@ -9,3 +9,6 @@ You have to set the mysql username, password and database name in
 this files:
  * src/hibernate.cfg.xml
  * WebContent/WEB-INF/shiro.ini
+
+screenshots
+http://postimg.org/image/6l8y1yquv/
