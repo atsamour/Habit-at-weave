@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
  */
 package com.atsamour.habitatweave.controller;
 
@@ -10,7 +10,6 @@ import com.atsamour.habitatweave.models.MeasurementDay;
 import com.atsamour.habitatweave.models.SensorInfo;
 import com.atsamour.habitatweave.util.HibernateUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -88,7 +87,6 @@ public class IndexServlet extends HttpServlet {
                 }
             }
 
-            //HttpSession session = request.getSession();
             request.setAttribute("sensorIDs", _sensorIDs);
             request.setAttribute("sensors", _sensors);
 
@@ -105,8 +103,6 @@ public class IndexServlet extends HttpServlet {
             //set last probe of selected sensor
             List<Float> watts = _sensors.get( _sensorIDs.indexOf(sensor) ).getWatts();
             float probe = watts.get(watts.size() - 1);
-            //System.out.println(probe);
-            //request.setAttribute("indication", Float.toString(probe));
             request.setAttribute("indication", probe);
             
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -118,8 +114,7 @@ public class IndexServlet extends HttpServlet {
                 date2 = dateFormat.parse("2014/05/28");
             } catch (ParseException ex) {
                 Logger.getLogger(SchedulesServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }            
-            //Session session = HibernateUtil.getSessionFactory().openSession();
+            }
             
             session.beginTransaction();
             

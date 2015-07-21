@@ -9,3 +9,16 @@ You have to set the mysql username, password and database name in
 this files:
  * src/hibernate.cfg.xml
  * WebContent/WEB-INF/shiro.ini
+
+ 
+To test the admin-permission example, ensure to create this entity
+in the RolesPermission table:
+> INSERT INTO `RolesPermission` VALUES (1,'admin:access','admin');
+
+Alternativly you can import the sql-dump file (dump.sql).
+
+== Set the mysql config
+You have to set the mysql username, password and database name in
+this files:
+ * src/hibernate.cfg.xml
+ * WebContent/WEB-INF/shiro.ini

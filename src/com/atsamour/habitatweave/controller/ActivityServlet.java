@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014. All rights reserved.
+ * Copyright (C) 2015. All rights reserved.
  * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
  * @author      Arkadios Tsamourliadis
  */
@@ -23,10 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author AlariC
- */
 public class ActivityServlet extends HttpServlet {
 
     /**
@@ -59,19 +55,22 @@ public class ActivityServlet extends HttpServlet {
         
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
+        //Retrives the min and max date with available data form the measurement table
         Query query = session.createSQLQuery("SELECT `start_time` FROM measurement WHERE type = 'Calories' ORDER BY start_time ASC LIMIT 1");
-                
         List<Object> result = query.list();
         Date date = new Date();
         date = (java.sql.Timestamp)( result.get(0) );
+        //Attributes used at datetimepicker JavaScript
         request.getSession().setAttribute("minD", date);
         query = session.createSQLQuery("SELECT `start_time` FROM measurement WHERE type = 'Calories' ORDER BY start_time DESC LIMIT 1");
         result = query.list();
         date = (java.sql.Timestamp)( result.get(0) );  
         request.getSession().setAttribute("maxD", date);               
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/secure/activity.jsp");
-
         
+        if (session.isOpen()) {
+            session.close();
+        }    
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/secure/activity.jsp");
         rd.forward(request, response);
     }
     
@@ -102,12 +101,24 @@ public class ActivityServlet extends HttpServlet {
                 date2 = dateFormat.parse(date2str);
             } catch (ParseException ex) {
                 Logger.getLogger(SchedulesServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }            
-            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
+            Session session=null;
+            List<Object[]> result=new ArrayList<>();
+            try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             String person_id="10000";//????????????
-            // result[] = [`date`, `value`, `start_time`]
-            List<Object[]> result = getActivityMeasurement(session, person_id, date1, date2);
+            // after exec it will look like this: result[] = [`date`, `value`, `start_time`]
+            result = getActivityMeasurement(session, person_id, date1, date2);
+            }
+            catch (  Exception e) {
+               e.printStackTrace();
+            }
+            finally {
+                if (session != null && session.isOpen()) {
+                    session.close();
+                }
+            }
             List<CaloriesHour> chList = new ArrayList<>(); //for calories
             //Date currDate = new Date(0);
             CaloriesHour ch= new CaloriesHour();
@@ -183,9 +194,6 @@ public class ActivityServlet extends HttpServlet {
 //            }
             //request.setAttribute("dates", dates);
             
-            if (session.isOpen()) {
-                session.close();
-            }
 
         } else {
             request.setAttribute("message", "No date selected");
@@ -200,10 +208,6 @@ public class ActivityServlet extends HttpServlet {
     public List<Object[]> getActivityMeasurement(Session session, 
             String person_id, Date date1, Date date2) {
         Query query = session.createSQLQuery(
-//            "select `date`, `value`, `start_time`, `type` from measurement "
-//                    + "WHERE measurement.person_id=:pid AND type IN ( 'Calories', 'MovingIntensity' ) "
-//                    + "AND date BETWEEN :date1 AND :date2" )//.addScalar("type", StringType.INSTANCE)
-        //.addEntity(Date.class)
              "SELECT `date`, SUM(measurement.value) AS value, HOUR(measurement.start_time)"
                      + " as start_time, `type` FROM measurement WHERE "
                      + "measurement.person_id=:pid AND type IN ( 'Calories', 'MovingIntensity' )"

@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
+ */
 package com.atsamour.habitatweave.controller;
 
 import java.io.IOException;
@@ -45,13 +50,14 @@ public class CurrentCostServlet extends HttpServlet {
         ResultSet rs = null;
         
         //List of SensorInfo Object, each of one contains corresponding sensor probes
-        List<SensorInfo> _sensors = new ArrayList<SensorInfo>();
-        List<Integer> _sensorIDs = new ArrayList<Integer>();
+        List<SensorInfo> _sensors = new ArrayList<>();
+        List<Integer> _sensorIDs = new ArrayList<>();
 
         try {
             Connection con = connectionProvider.getConnection();
 //            ps = con.prepareStatement("SELECT `sensorID`, SUM(ccdata.phasesum) AS phasesum,"
 //                    + " `date`, `time` FROM ccdata ORDER BY `sensorID`, date, HOUR(time)");
+//              did not yet implemented select by sensorID
                         
             ps = con.prepareStatement("SELECT * FROM ccdata ORDER BY `sensorID`");
             rs = ps.executeQuery();

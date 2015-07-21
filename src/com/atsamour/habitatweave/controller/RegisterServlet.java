@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
+ */
 package com.atsamour.habitatweave.controller;
 
 import java.io.IOException;
@@ -20,7 +25,7 @@ import com.atsamour.habitatweave.util.HibernateUtil;
 /**
  * Servlet implementation class RegisterServlet
  */
-@WebServlet("/RegisterServlet")
+//@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 
     /**
@@ -93,9 +98,8 @@ public class RegisterServlet extends HttpServlet {
         RandomNumberGenerator rng = new SecureRandomNumberGenerator();
         Object salt = rng.nextBytes();
 
-		// Now hash the plain-text password with the random salt and multiple
-        // iterations and then Base64-encode the value (requires less space than
-        // Hex):
+	// Now hash the plain-text password with the random salt and multiple
+        // iterations and then Base64-encode the value (requires less space than Hex):
         String hashedPasswordBase64 = new Sha256Hash(plainTextPassword, salt,
                 1024).toBase64();
 

@@ -15,7 +15,6 @@
 
     <title>Habitatweave: Direct Appliances Control</title>
 
-
     <script src="resources/js/jquery.js" ></script>
     <script src="resources/bootstrap/js/bootstrap.min.js"></script> 
 
@@ -173,8 +172,8 @@
                                                 <td>${currentAppliance.id}</td>
                                                 <td>${currentAppliance.vendorname}</td>
                                                 <td>${currentAppliance.description}</td>
-                                                <td><a href="${baseURL}?sensor=${currentAppliance.id}&action=ON">ON </a>
-                                                    <a href="${baseURL}?sensor=${currentAppliance.id}&action=OFF">OFF</a>
+                                                <td><a href="${baseURL}/awesome?sensor=${currentAppliance.id}&action=ON">ON </a>
+                                                    <a href="${baseURL}/awesome?sensor=${currentAppliance.id}&action=OFF">OFF</a>
                                                 </td>
                                             </tr>
                                         </c:if> </c:forEach>
@@ -208,8 +207,8 @@
                                                 <td>${currentAppliance.id}</td>
                                                 <td>${currentAppliance.vendorname}</td>
                                                 <td>${currentAppliance.description}</td>
-                                                <td><a href="${baseURL}?sensor=${currentAppliance.id}&action=ON">ON </a>
-                                                    <a href="${baseURL}?sensor=${currentAppliance.id}&action=OFF">OFF</a>
+                                                <td><a href="${baseURL}/awesome?sensor=${currentAppliance.id}&action=ON">ON </a>
+                                                    <a href="${baseURL}/awesome?sensor=${currentAppliance.id}&action=OFF">OFF</a>
                                                 </td>
                                             </tr>
                                         </c:if> </c:forEach>

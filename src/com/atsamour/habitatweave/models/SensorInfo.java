@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
  */
 package com.atsamour.habitatweave.models;
 
@@ -11,10 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-/**
- *
- * @author AlariC
- */
+
 public class SensorInfo implements Serializable {
     
     private int sensorID;

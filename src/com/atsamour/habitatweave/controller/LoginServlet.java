@@ -6,19 +6,16 @@ import com.atsamour.habitatweave.models.User;
 import com.atsamour.habitatweave.util.HibernateUtil;
 import java.io.IOException;
 
-//import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.SaltedAuthenticationInfo;
+//import org.apache.shiro.authc.SaltedAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;

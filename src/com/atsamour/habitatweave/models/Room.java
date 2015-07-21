@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
  */
 package com.atsamour.habitatweave.models;
 
@@ -12,18 +12,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author AlariC
- */
 @Entity
 @Table
 public class Room implements Serializable {
     
-   
-    /**
-     *
-     */
     private static final long serialVersionUID = 72234543L;
 
     @Id

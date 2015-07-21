@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2015. All rights reserved.
  * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
- * @author      Arkadios Tsamourliadis
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
  */
 
 package com.atsamour.habitatweave.controller;

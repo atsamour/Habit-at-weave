@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
  */
 package com.atsamour.habitatweave.controller;
 
@@ -49,7 +49,8 @@ public class SchedulesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html");// read password hash and salt from db
+        response.setContentType("text/html");
+        // read password hash and salt from db
 
         Session hiberSession = HibernateUtil.getSessionFactory().openSession();
         hiberSession.beginTransaction();
@@ -60,8 +61,9 @@ public class SchedulesServlet extends HttpServlet {
             
             final List<WorkToDo> workOldList;
             
-            //vvvv show works to do in 1 min instead of old
+            //vvvv show works to do in 1 min instead of ALL the old
             //workOldList = workToDoDAO.getWorksToDo(Calendar.getInstance());
+            
             workOldList = workToDoDAO.getWorksOld(Calendar.getInstance());
             
             ApplianceDAO applianceDAO = new ApplianceDAO(hiberSession);
@@ -69,7 +71,6 @@ public class SchedulesServlet extends HttpServlet {
             appliances = applianceDAO.getAppliancesByUserId(Integer.parseInt(getCurrentUserId()));
             
             
-        
             request.setAttribute("appliances", appliances);
             request.setAttribute("workToDoList", workToDoList);
             request.setAttribute("workOldList", workOldList);
@@ -129,24 +130,7 @@ public class SchedulesServlet extends HttpServlet {
         }
         
         doGet(request,response);
-        // draw JSP
-//        try {
-//            request.getRequestDispatcher("/plugschedule").forward(request,response);
-//        } catch (ServletException e) {
-//            e.printStackTrace();
-//        }
     }
-    
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
     
     private void createWork(Session session, String description,
                             int appliance, String action, Calendar date) {

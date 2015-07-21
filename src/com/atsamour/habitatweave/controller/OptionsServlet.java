@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
  */
 package com.atsamour.habitatweave.controller;
 
@@ -18,10 +18,6 @@ import org.apache.shiro.SecurityUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author AlariC
- */
 public class OptionsServlet extends HttpServlet {
 
     /**

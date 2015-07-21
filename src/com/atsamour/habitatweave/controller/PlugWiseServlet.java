@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Copyright (C) 2015. All rights reserved.
+ * GNU AFFERO GENERAL PUBLIC LICENSE Version 3;
+ * Arkadios Tsamourliadis   https://github.com/atsamour/
  */
 package com.atsamour.habitatweave.controller;
 
@@ -100,36 +100,13 @@ public class PlugWiseServlet extends HttpServlet {
             SensorInfo tmpSensor = new SensorInfo();
             while(rs2.next()){
                 //Retrieve by column name
-                //String sensorID  = rs2.getString("sensorID");
                 String date = rs2.getString("date");
                 String time = rs2.getString("time");
                 float watts = rs2.getFloat("value");
                 tmpSensor.addInfo(sensor, date, time, watts);
-                    //_sensors.add(tmpSensor);
-                    //_sensorIDs.add(sensorID);
             }
-            
-            // Extract ALL sensors data from result set
-//            while(rs2.next()){
-//                //Retrieve by column name
-//                String sensorID  = rs2.getString("sensorID");
-//                String date = rs2.getString("date");
-//                String time = rs2.getString("time");
-//                float watts = rs2.getFloat("value");
-//
-//                if (_sensorIDs.contains(sensorID)){
-//                    _sensors.get( _sensorIDs.indexOf(sensorID) ).addInfo(date, time, watts);
-//                } else{                    
-//                    SensorInfo tmpSensor = new SensorInfo();
-//                    tmpSensor.addInfo(sensorID, date, time, watts);
-//                    _sensors.add(tmpSensor);
-//                    //_sensorIDs.add(sensorID);
-//                }
-//            }
 
-            //HttpSession session = request.getSession();
             request.setAttribute("sensorObj", tmpSensor);
-
             request.setAttribute("sensor", sensor);
 
             //set last probe of selected sensor
@@ -137,7 +114,6 @@ public class PlugWiseServlet extends HttpServlet {
             float probe = watts.get(watts.size() - 1);
             request.setAttribute("indication", probe);
             
-
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/secure/plugwise.jsp");
             rd.forward(request, response);
 
@@ -163,11 +139,6 @@ public class PlugWiseServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-//	request.setAttribute("currentEmail", getCurrentUserEmail());
-//	org.apache.shiro.subject.Subject currentUser = SecurityUtils.getSubject();
-//	request.setAttribute("adminAccess", currentUser.isPermitted("admin:access"));
-        
         response.setContentType("text/html;charset=UTF-8");       
         showCharts(request, response); 
   }
