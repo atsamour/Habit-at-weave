@@ -1,5 +1,5 @@
 # Habit@weave
-Habit@weave is a web application for the control and monitoring â€œsmart homeâ€ and wearable devices.
+Habit@weave is a web application for the control and monitoring â€?smart homeâ€? and wearable devices.
 The power consumption graphs and the capability to schedule actions can help the user to make the right decisions for efficient energy saving at home, while the calorie consumption and sleep quality charts may contribute to adoption of habits that improve heath. The user can use the application from a PC, as well as from any other portable device with access to the Internet. It is an initial effort towards a functional Ambient Assisted Living system.
 
 It's a Maven project created in NetBeans. Backend is written in Java using javax.servlet API, frontend is based on Bootstrap and implemented with JSP views. The project integrades Shiro and Hibernate frameworks.
@@ -10,15 +10,5 @@ this files:
  * src/hibernate.cfg.xml
  * WebContent/WEB-INF/shiro.ini
 
- 
-To test the admin-permission example, ensure to create this entity
-in the RolesPermission table:
-> INSERT INTO `RolesPermission` VALUES (1,'admin:access','admin');
-
-Alternativly you can import the sql-dump file (dump.sql).
-
-== Set the mysql config
-You have to set the mysql username, password and database name in
-this files:
- * src/hibernate.cfg.xml
- * WebContent/WEB-INF/shiro.ini
+screenshots
+http://postimg.org/image/6l8y1yquv/
