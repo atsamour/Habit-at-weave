@@ -16,11 +16,13 @@
 
     <title>Habitatweave: UP24 Activity monitor </title>
 	
-    <script src="resources/js/jquery.js" ></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="resources/bootstrap/js/bootstrap.min.js"></script>
     
     <script src="http://responsivevoice.org/responsivevoice/responsivevoice.js"></script>
-	
+
+    
+    
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/data.js"></script>
     <script src="http://code.highcharts.com/modules/heatmap.js"></script>
@@ -134,6 +136,7 @@ $(function () {
                 //proceed.call(this);
             }
         });
+        H.seriesTypes.heatmap.prototype.directTouch = false; // Use k-d-tree
     }(Highcharts));
 
 
@@ -249,7 +252,7 @@ $(function () {
             x: 40
         },
 
-        subtitle: {<c:set var="length" value="${fn:length(chList)}"/>
+        subtitle: {
             text: 'Moving Intensity per hour from ${chList[0].date} to ${chList[length-1].date}',
             align: 'left',
             x: 40
@@ -328,7 +331,7 @@ $(function () {
 </head>
 
 
-<body onload="responsiveVoice.speak($('#text').val(), 'UK English Female');">
+<body>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -555,13 +558,3 @@ $(function () {
 </body>
 
 </html>
-
-
-
-<!--
-<body>
-    <div id="chart1" style="height: 320px; width: 1000px; margin: 0 auto"></div>
-</body>
-
-</html>
--->
